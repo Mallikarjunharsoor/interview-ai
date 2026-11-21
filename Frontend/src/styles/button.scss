@@ -1,0 +1,50 @@
+.btn{
+        padding-block: 0.75rem;
+        border-radius: 0.5rem;
+        border: none;
+        outline: none;
+        background-color: #f5f5f5;
+        color: #252525;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+        &:active{
+            transform: scale(0.98);
+        }
+
+        &:hover{
+            background-color: #e0e0e0;
+        }
+     }
+
+     .login-btn{
+        background-color: #4caf50;
+        color: white;
+
+        &:hover{
+            background-color: #45a049;
+        }
+     }
+
+     .register-btn{
+        background-color: #008cba;
+        color: white;
+
+        &:hover{
+            background-color: #007bb5;
+        }
+     }
+
+      .register-link{
+            color: #008cba;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .login-link{
+            color: #4caf50;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .heighlight{
+            color:rgb(157, 218, 254);
+        }
