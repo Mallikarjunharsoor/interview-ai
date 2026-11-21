@@ -11,16 +11,17 @@ app.set('trust proxy', 1);
 
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://interview-ai-three-tau.vercel.app'
+    'https://interview-ai-three-tau.vercel.app',
+    'https://interview-ai-git-main-mallikarjunharsoors-projects.vercel.app'
 ];
 
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
+            return callback(null, true);
         }
+
+        return callback(new Error(`CORS blocked origin: ${origin}`));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
