@@ -8,13 +8,17 @@ const tokenBlackListModel = require('../models/tokenBlacklist.model');
 
 // COOKIE CONFIGURATION
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const cookieOptions = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'lax',
     maxAge: 24 * 60 * 60 * 1000,
     path: '/'
 };
+
+const { maxAge, ...clearCookieOptions } = cookieOptions;
 
 
 // REGISTER
@@ -210,12 +214,7 @@ async function logoutController(req, res) {
 
         // Clear the same cookie that was created during login.
 
-        res.clearCookie("token", {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
-            path: '/'
-        });
+        res.clearCookie("token", clearCookieOptions);
 
 
         return res.status(200).json({
